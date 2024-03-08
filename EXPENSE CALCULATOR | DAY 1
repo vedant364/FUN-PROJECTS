@@ -1,0 +1,22 @@
+#include<stdio.h>
+int main(){
+    printf("Enter the number of expenses for today:\n");
+    int i,j,num_of_expenses,sum;
+    scanf("%d",&num_of_expenses);
+    int myexpenses[num_of_expenses-1];
+    for(i=0;i<num_of_expenses;i++){
+        printf("Enter the expense amount for the %i the expense\n",i);
+        scanf("%d",&myexpenses[i]);
+        
+    }
+    printf("The total expenses for the day are:\n");
+    sum=0;
+    int length = sizeof(myexpenses)/sizeof(myexpenses[0]);
+    for(j=0;j<num_of_expenses;j++){
+        sum = sum + myexpenses[j];
+
+    }
+    printf("INR %d RUPEES\n",sum);
+    return 0;
+    
+}
