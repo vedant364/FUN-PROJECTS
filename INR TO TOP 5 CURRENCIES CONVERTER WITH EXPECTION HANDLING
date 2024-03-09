@@ -1,0 +1,27 @@
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    float INR;
+    char currency_choice[4]; // Increase the size to accommodate 3 characters + null terminator
+
+    printf("Enter the amount in INR (INDIAN RUPEES)\n");
+    scanf("%f", &INR);
+    printf("Enter which currency you want to convert into. Choose USD, EUR, JPY, GBP, or CNY:\n");
+    scanf("%s", currency_choice);
+
+    if (strcmp(currency_choice, "USD") == 0)
+        printf("%.2f\n", INR * 0.012);
+    else if (strcmp(currency_choice, "EUR") == 0)
+        printf("%.2f\n", INR * 0.011);
+    else if (strcmp(currency_choice, "JPY") == 0)
+        printf("%.2f\n", INR * 1.78);
+    else if (strcmp(currency_choice, "GBP") == 0)
+        printf("%.2f\n", INR * 0.0094);
+    else if (strcmp(currency_choice, "CNY") == 0)
+        printf("%.2f\n", INR * 0.087);
+    else
+        printf("Invalid choice. Try again as choices are case sensitive!!!\n");
+
+    return 0;
+}
