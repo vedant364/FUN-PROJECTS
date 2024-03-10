@@ -1,0 +1,36 @@
+#include<stdio.h>
+#include<math.h>
+#include<ctype.h>
+
+int main(){
+    float number_1, number_2, solution;
+    char choice;
+    printf("Enter the first number!\n");
+    scanf("%f",&number_1);
+    printf("Enter the second number!\n");
+    scanf("%f",&number_2);
+    
+
+    printf("Enter the operation you wanna perform. 'A' for Addition, 'S' Subtraction, 'M' Multiplication,'D' Division, 'Q' Square root, or 'L' logarithmic Value\n");
+    
+    scanf(" %c", &choice);
+    choice=toupper(choice);
+    if(choice=='A')
+    printf("The Sum of %.2f and %.2f is %.2f .\n",number_1,number_2,number_1+number_2);
+    else if(choice=='S')
+    printf("The Difference of %.2f and %.2f is %.2f .\n",number_1,number_2,number_1-number_2);
+    else if(choice=='M')
+    printf("The Product of %.2f and %.2f is %.2f .\n",number_1,number_2,number_1*number_2);
+    else if(choice=='D')
+    printf("The Quotient of %.2f and %.2f is %.2f .\n",number_1,number_2,number_1/number_2);
+    else if(choice=='Q')
+    printf("The Square Root of the first number %.2f is %.2f .\n",number_1,sqrt(number_1));
+    else if(choice=='L')
+    printf("The Logarithmic value of the first number %.2f is %.2f .\n",number_1,log(number_1));
+    else
+    printf("The entered choice was invalid. Please Type on only the first letter of the operation you want to perform!\n");
+
+
+    return 0;
+
+}
