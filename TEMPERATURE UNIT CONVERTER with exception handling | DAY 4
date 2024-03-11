@@ -1,0 +1,27 @@
+#include<stdio.h>
+#include<ctype.h>
+
+
+int main(){
+    float Farenheit, Celsius, Kelvin, Temperature;
+    char F, C, K,choice;
+
+    printf("Enter your temperature's unit. 'F' for Farenheit, 'C' Celcius, 'K' Kelvin.\n");
+    scanf("%c",&choice);
+    choice=toupper(choice);
+    printf("Enter the temperature without units.\n");
+    scanf("%f", &Temperature);
+
+    if(choice=='F')
+    printf("The temperature %.2f in Celcius is %.2f C and in Kelvin is %.2f C.\n",Temperature,Celsius=(Temperature-32)/1.8,Kelvin=(Temperature-32)/1.8 + 273.15);
+    else if(choice=='C')
+    printf("The temperature %.2f in Farenheit is %.2f F and in Kelvin is %.2f K.\n",Temperature,Farenheit=(1.8*Temperature)+32,Kelvin=Temperature+273.15);
+    else if(choice=='K')
+    printf("The temperature %.2f in Farenheit is %.2f F and in Celcius is %.2f C. \n",Temperature,Farenheit=1.8*(Temperature-272)+32,Celsius=Temperature-273.15);
+    else
+    printf("Invalid choice. Enter the unit and then temperature again.\n");
+
+    return 0;
+
+
+}
