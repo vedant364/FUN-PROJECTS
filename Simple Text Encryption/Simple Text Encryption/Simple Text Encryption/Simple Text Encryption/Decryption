@@ -1,0 +1,56 @@
+#include <stdio.h>
+#include <ctype.h> // For character functions like isalpha()
+
+int main() {
+    char filename[100];
+    char mode; // 'e' for encrypt, 'd' for decrypt
+    int key;
+
+    printf("Enter the name of the text file: ");
+    scanf("%s", filename);
+
+    printf("Enter 'e' for encryption or 'd' for decryption: ");
+    scanf(" %c", &mode); // Space before %c to consume newline
+
+    printf("Enter the key (number of positions to shift): ");
+    scanf("%d", &key);
+
+    FILE *fp_read, *fp_write;
+    char ch, encrypted_ch;
+
+    if (mode == 'e') {
+        fp_read = fopen(filename, "r");
+        fp_write = fopen("encrypted.txt", "w"); // Create a new file for encrypted content
+    } else if (mode == 'd') {
+        fp_read = fopen(filename, "r"); // Assume the file to decrypt is named filename
+        fp_write = fopen("decrypted.txt", "w"); // Create a new file for decrypted content
+    } else {
+        printf("Invalid mode!\n");
+        return 1;
+    }
+
+    if (fp_read == NULL || fp_write == NULL) {
+        printf("Error opening files!\n");
+        return 1;
+    }
+
+    while ((ch = fgetc(fp_read)) != EOF) {
+        if (isalpha(ch)) {
+            encrypted_ch = ch + (mode == 'e' ? key : -key); // Shift based on mode
+            if (isupper(ch) && encrypted_ch > 'Z') {
+                encrypted_ch -= 26; // Wrap around for uppercase letters
+            } else if (islower(ch) && encrypted_ch < 'a') {
+                encrypted_ch += 26;
+            }
+        } else {
+            encrypted_ch = ch; // Keep non-alphabetic characters unchanged
+        }
+        fputc(encrypted_ch, fp_write);
+    }
+
+    fclose(fp_read);
+    fclose(fp_write);
+
+    printf("Operation successful!\n");
+
+    return 
