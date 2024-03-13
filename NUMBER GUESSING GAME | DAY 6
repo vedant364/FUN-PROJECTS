@@ -1,0 +1,49 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+int main() {
+    int guess, actual_number;
+    char choice;
+
+    // Seed random number generator for better randomness
+    srand(time(NULL));
+
+    // Generate a random number between 1 and 100 (or any desired range)
+    actual_number = rand() % 100 + 1;
+
+    printf("Welcome to the Number Guessing Game!\n");
+    printf("Think of a number between 1 and 100. I'll try to guess it.\n\n");
+ 
+    do {
+        printf("Is your number %d? (y/n): ", guess);
+        scanf(" %c", &choice); // Add a space before %c to consume whitespace
+
+        if (choice == 'y' || choice == 'Y') {
+            printf("Yay! I guessed it correctly!\n");
+            break;  // Exit the loop if the guess is correct
+        } else if (choice == 'n' || choice == 'N') {
+            printf("Is your number higher (h) or lower (l)? ");
+            scanf(" %c", &choice);  // Again, consume whitespace
+
+            if (choice == 'h' || choice == 'H') {
+                guess++;  // Increase guess for higher numbers
+            } else if (choice == 'l' || choice == 'L') {
+                guess--;  // Decrease guess for lower numbers
+            } else {
+                printf("Invalid input. Please enter 'y', 'n', 'h', or 'l'.\n");
+            }
+        } else {
+            printf("Invalid input. Please enter 'y', 'n', 'h', or 'l'.\n");
+        }
+
+        // Add a check to prevent infinite loop if user enters invalid input repeatedly
+        if (guess < 1 || guess > 100) {
+            printf("Your number must be between 1 and 100.\n");
+            guess = actual_number + 1; // Set guess to an invalid value to break the loop
+        }
+
+    } while (guess != actual_number);  // Loop continues until guess is correct
+
+    return 0;
+}
