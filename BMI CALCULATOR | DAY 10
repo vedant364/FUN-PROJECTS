@@ -1,0 +1,36 @@
+#include<stdio.h>
+#include<conio.h>
+
+int main(){
+    float ft,m,weight,height,inch;
+    char L,K,weight_unit;
+    char M,F,height_unit;
+
+
+
+    printf("Type 'L' for entering weight in pounds(lbs) and 'K' for kilograms(kg).\n");
+    scanf("%c",&weight_unit);
+    printf("Enter your weight,ie, Value.\n");
+    scanf("%f",&weight);
+
+
+    printf("Your height will be taken in feet(ft) if you chose 'L' as your previous option and meters(m) if you chose the prev option as kilogram(kg).\n");
+    scanf("%c", &height_unit);
+    printf("Enter you height,i.e,Value.\n");
+    scanf("%f",&height);
+    inch=ft*12;
+
+
+    if(weight_unit=='L')
+    printf("For your weight of %.2f lbs and height of %.2f inches(converted from ft),your BMI is %.2f lb/in^2.\n",weight,inch, weight/(inch*inch));
+    else(weight_unit=='K');
+    printf("For you weight of %.2f kg and height of %.2f meters, your BMI is %.2f kg/m^2.\n",weight,height,weight/(height*height));
+    
+    
+
+    //getch();
+    //clrscr();
+    return 0;
+
+
+}
